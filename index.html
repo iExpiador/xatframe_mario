@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Efecto adaptado por: Expiador -->
+<!-- Preview: https://iexpiador.github.io/xatframe_mario/ -->
+
+<html lang="en/es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fondo Parallax de Mario</title>
+
+  <style>
+    /* 
+    💬 Este estilo recrea un fondo animado tipo "Super Mario"
+    con desplazamiento (parallax) usando varias imágenes en capas.
+    */
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    body {
+      /* 
+      💬 Imágenes del fondo en capas, de frente a fondo:
+      1. Mario animado
+      2. Suelo
+      3. Arbustos
+      4. Fondo del cielo/montañas
+      */
+      background-image: 
+        url("https://raw.githubusercontent.com/iExpiador/xatframe_mario/refs/heads/main/mario.gif"),
+        url("https://raw.githubusercontent.com/iExpiador/xatframe_mario/refs/heads/main/ground.png"),
+        url("https://raw.githubusercontent.com/iExpiador/xatframe_mario/refs/heads/main/bushes.png"),
+        url("https://raw.githubusercontent.com/iExpiador/xatframe_mario/refs/heads/main/background.png");
+
+      /* 💬 Color del cielo detrás del fondo */
+      background-color: #f8e0b0;
+
+      /* 💬 Se repiten horizontalmente algunas capas para crear el efecto de movimiento */
+      background-repeat: no-repeat, repeat-x, repeat-x, repeat-x;
+
+      /* 
+      💬 Posiciona cada capa:
+      - Mario un poco arriba del suelo
+      - Suelo en la parte inferior
+      - Arbustos justo encima del suelo
+      - Fondo (montañas) detrás de todo
+      */
+      background-position:
+        left 30% bottom 22px,      /* Mario */
+        left 0 bottom 0,           /* Suelo */
+        left 0 bottom 22px,        /* Arbustos */
+        left 0 bottom 0;           /* Fondo */
+
+      /* 💬 Aplica la animación de movimiento */
+      animation: back 15s infinite linear;
+    }
+
+    /* 💬 Animación que desplaza las capas del fondo para simular movimiento */
+    @keyframes back {
+      0% {
+        background-position: 
+          left 30% bottom 22px,
+          left 0 bottom 0,
+          left 0 bottom 22px,
+          left 0 bottom 0;
+      }
+
+      50% {
+        background-position: 
+          left 50% bottom 22px,
+          left -816px bottom 0,   /* Movimiento del suelo */
+          left -508px bottom 22px,/* Movimiento de los arbustos */
+          left -256px bottom 0;   /* Movimiento del fondo */
+      }
+
+      100% {
+        background-position: 
+          left 30% bottom 22px,
+          left -1632px bottom 0,
+          left -1016px bottom 22px,
+          left -512px bottom 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 💬 El cuerpo está vacío porque el fondo animado se maneja solo con CSS -->
+</body>
+</html>
